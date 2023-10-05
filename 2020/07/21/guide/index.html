@@ -1,0 +1,384 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Typora+Markdown使用指南 | Dell</title><meta name="description" content="default 依照typora内置的Markdown Reference，熟悉了一下各种样式的输入。顺便译成中文，方便之后查询。备注了一些在使用中需要注意的小细节。                          default 感觉typora默认的字体不太好看，参照 这篇文章 进行了字体修改，然后同样对 英文字体 进行了设置。因为我选用的思源字体使用其他方法都没能"><meta name="keywords" content="typora"><meta name="author" content="yuneryeol"><meta name="copyright" content="yuneryeol"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2020/07/21/guide/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Typora+Markdown使用指南"><meta property="og:url" content="http://yoursite.com/2020/07/21/guide/"><meta property="og:site_name" content="Dell"><meta property="og:description" content="default 依照typora内置的Markdown Reference，熟悉了一下各种样式的输入。顺便译成中文，方便之后查询。备注了一些在使用中需要注意的小细节。                          default 感觉typora默认的字体不太好看，参照 这篇文章 进行了字体修改，然后同样对 英文字体 进行了设置。因为我选用的思源字体使用其他方法都没能"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/yuneryeol/cover/images/67560672.png"><meta property="article:published_time" content="2020-07-21T04:56:57.000Z"><meta property="article:modified_time" content="2020-07-21T06:00:17.292Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="Next主题美化" href="http://yoursite.com/2020/07/21/embellish/"><link rel="next" title="初识个人博客" href="http://yoursite.com/2020/07/21/setup/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: yuneryeol","link":"链接: ","source":"来源: Dell","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-07-21 14:00:17'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Dell" type="application/atom+xml">
+</head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">3</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fas fa-arrow-right" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Block-Elements-块元素"><span class="toc-number">1.</span> <span class="toc-text">Block Elements 块元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Paragraph-and-line-breaks-段落和换行符"><span class="toc-number">1.1.</span> <span class="toc-text">Paragraph and line breaks 段落和换行符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Header-标题"><span class="toc-number">1.2.</span> <span class="toc-text">Header 标题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Blockquotes-块引用"><span class="toc-number">1.3.</span> <span class="toc-text">Blockquotes 块引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#List-列表"><span class="toc-number">1.4.</span> <span class="toc-text">List 列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fenced-Code-Blocks-代码块"><span class="toc-number">1.5.</span> <span class="toc-text">(Fenced)Code Blocks 代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Math-Blocks-数学块"><span class="toc-number">1.6.</span> <span class="toc-text">Math Blocks 数学块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Table-插入表格"><span class="toc-number">1.7.</span> <span class="toc-text">Table 插入表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Footnotes-脚注"><span class="toc-number">1.8.</span> <span class="toc-text">Footnotes 脚注</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Horizontal-Rules-分隔符"><span class="toc-number">1.9.</span> <span class="toc-text">Horizontal Rules 分隔符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YAML-Front-Matter-YAML首要事项"><span class="toc-number">1.10.</span> <span class="toc-text">YAML Front Matter YAML首要事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Table-of-Contents（TOC）-目录"><span class="toc-number">1.11.</span> <span class="toc-text">Table of Contents（TOC） 目录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Span-Elements-跨度元素"><span class="toc-number">2.</span> <span class="toc-text">Span Elements 跨度元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Links-插入链接"><span class="toc-number">2.1.</span> <span class="toc-text">Links 插入链接</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Internal-Links-内部链接"><span class="toc-number">2.1.1.</span> <span class="toc-text">Internal Links 内部链接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Reference-Links-参考样式链接"><span class="toc-number">2.1.2.</span> <span class="toc-text">Reference Links 参考样式链接</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#URLs-插入网址"><span class="toc-number">2.2.</span> <span class="toc-text">URLs 插入网址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Images-引用图片"><span class="toc-number">2.3.</span> <span class="toc-text">Images 引用图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Strong-加粗"><span class="toc-number">2.4.</span> <span class="toc-text">Strong 加粗</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Code-行内代码"><span class="toc-number">2.5.</span> <span class="toc-text">Code 行内代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Strikethrough-删除线"><span class="toc-number">2.6.</span> <span class="toc-text">Strikethrough 删除线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Underlines-下划线"><span class="toc-number">2.7.</span> <span class="toc-text">Underlines 下划线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Emoji-smile-emoji"><span class="toc-number">2.8.</span> <span class="toc-text">Emoji :smile: emoji</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Inline-Math-内联公式"><span class="toc-number">2.9.</span> <span class="toc-text">Inline Math 内联公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Subscript-下标"><span class="toc-number">2.10.</span> <span class="toc-text">Subscript 下标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Superscript-上标"><span class="toc-number">2.11.</span> <span class="toc-text">Superscript 上标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Highlight-高光"><span class="toc-number">2.12.</span> <span class="toc-text">Highlight 高光</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML"><span class="toc-number">3.</span> <span class="toc-text">HTML</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Embed-Contents-嵌入内容"><span class="toc-number">3.1.</span> <span class="toc-text">Embed Contents 嵌入内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Video-视频"><span class="toc-number">3.2.</span> <span class="toc-text">Video 视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Other-HTML-Supports-其他HTML支持"><span class="toc-number">3.3.</span> <span class="toc-text">Other  HTML Supports 其他HTML支持</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Supplement-补充"><span class="toc-number">4.</span> <span class="toc-text">Supplement 补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#空格与换行"><span class="toc-number">4.1.</span> <span class="toc-text">空格与换行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码高亮"><span class="toc-number">4.2.</span> <span class="toc-text">代码高亮</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/yuneryeol/cover/images/67560672.png)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">Dell</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> 休闲</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 推荐</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Typora+Markdown使用指南</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-07-21 12:56:57"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-07-21</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-07-21 14:00:17"><i class="fas fa-history fa-fw"></i> 更新于 2020-07-21</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">搭建博客</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>评论数:</span><a href="/2020/07/21/guide/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/07/21/guide/" itemprop="commentCount"></span></a></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><div class="note default">
+            <p>default 依照typora内置的Markdown Reference，熟悉了一下各种样式的输入。顺便译成中文，方便之后查询。备注了一些在使用中需要注意的小细节。</p>
+          </div>
+
+<div class="note default">
+            <p>default 感觉typora默认的字体不太好看，参照 <a href="https://blog.csdn.net/Likianta/article/details/102537843" target="_blank" rel="noopener">这篇文章</a> 进行了字体修改，然后同样对 <a href="https://blog.csdn.net/weixin_30793643/article/details/96879464" target="_blank" rel="noopener">英文字体</a> 进行了设置。因为我选用的思源字体使用其他方法都没能成功，试了这个终于搞定了。</p>
+          </div>
+
+<div class="note default">
+            <p>default 添加typora主题：不管是从官网给的链接还是github主页下载，速度都太慢了，中间还一直断，根本没可能下下来。参照 <a href="https://blog.csdn.net/kcx64/article/details/83866633" target="_blank" rel="noopener">kcx64</a> 给的方法，秒下完。</p>
+          </div>
+
+<h3 id="Block-Elements-块元素"><a href="#Block-Elements-块元素" class="headerlink" title="Block Elements 块元素"></a>Block Elements 块元素</h3><h4 id="Paragraph-and-line-breaks-段落和换行符"><a href="#Paragraph-and-line-breaks-段落和换行符" class="headerlink" title="Paragraph and line breaks 段落和换行符"></a>Paragraph and line breaks 段落和换行符</h4><p>一段是一个或多个连续的文本行。在Markdown中，段落由两个或多个空行分隔。在Typora中，只需要一个空白行（按一次 <code>return</code> 键）即可创建新段落。</p>
+<p>按 <code>Shift</code>  + <code>return</code> 创建一个换行符。但大多数其他Markdown解析器忽略单个换行符，因此，为了使其他Markdown解析器识别，可以在行尾保留两个空格，或插入 <code>&lt;br/&gt;</code> 。  </p>
+<h4 id="Header-标题"><a href="#Header-标题" class="headerlink" title="Header 标题"></a>Header 标题</h4><p>在Typora中，输入 <code>#</code> ，然后输入标题内容，按 <code>return</code> 键将创建标题。</p>
+<p>Headers use 1-6 hash ( <code>#</code> ) characters at the start of the line, corresponding to header levels 1-6. </p>
+<a id="more"></a>
+
+<h4 id="Blockquotes-块引用"><a href="#Blockquotes-块引用" class="headerlink" title="Blockquotes 块引用"></a>Blockquotes 块引用</h4><p>Markdown使用 <code>&gt;</code> 字符进行块引用。</p>
+<p>在Typora中，输入 <code>&gt;</code> 将生成一个块。 Typora将为您插入适当的 <code>&gt;</code> 或换行符。嵌套的块引号（另一块引号内的块引号）通过添加其他级别的 <code>&gt;</code> 来实现。</p>
+<blockquote>
+<p>这是一个测试</p>
+<blockquote>
+<p>嵌套块</p>
+<blockquote>
+<p>Test</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="List-列表"><a href="#List-列表" class="headerlink" title="List 列表"></a>List 列表</h4><p>输入 <code>* list item 1</code> 创建一个无序列表， <code>*</code> 符号可以替换为 <code>+</code> 或 <code>-</code> 。</p>
+<p>输入 <code>1. list item 1</code>创建一个有序列表。</p>
+<p>列表下一行缩进问题：进入下一行后，<code>ctrl+[</code> 就可以清楚格式。</p>
+<p>####　Task List 任务列表</p>
+<p>Task List是带有标记为- [ ]或- [x]（不完整或完整）的项目的列表。</p>
+<ul>
+<li><input disabled="" type="checkbox"> <p>a task listitem</p>
+</li>
+<li><input checked="" disabled="" type="checkbox"> <p>completed</p>
+</li>
+</ul>
+<p>可以通过单击项目前面的复选框来更改完成/未完成状态。</p>
+<h4 id="Fenced-Code-Blocks-代码块"><a href="#Fenced-Code-Blocks-代码块" class="headerlink" title="(Fenced)Code Blocks 代码块"></a>(Fenced)Code Blocks 代码块</h4><p>Typora <strong>仅在GitHub Flavored Markdown</strong>中支持栅栏。不支持markdown中的原始代码块。</p>
+<p>输入```并按回车键。</p>
+<p>或者在```之后添加对应的编程语言类型，将通过语法高亮显示它。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Here's an example:</span><br><span class="line"></span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<p>function test(){<br>console.log(“notice the blank line before this function?”);<br>}<br>​```</p>
+<p>syntax highlighting:<br>​<code>ruby
+require &#39;redcarpet&#39;
+markdown = Redcarpet.new(&quot;Hello World!&quot;)
+puts markdown.to_html
+​</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">显示为：</span><br><span class="line"></span><br><span class="line">Here&#39;s an example:</span><br></pre></td></tr></table></figure>
+<p>function test(){<br>console.log(“notice the blank line before this function?”);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">syntax highlighting:</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;ruby</span><br><span class="line">require &#39;redcarpet&#39;</span><br><span class="line">markdown &#x3D; Redcarpet.new(&quot;Hello World!&quot;)</span><br><span class="line">puts markdown.to_html</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Math-Blocks-数学块"><a href="#Math-Blocks-数学块" class="headerlink" title="Math Blocks 数学块"></a>Math Blocks 数学块</h4><p>使用<em><em>MathJax *</em>渲染 <em>LaTeX</em>数学表达式。要添加数学表达式，输入 <code>$$</code> ，然后按 <code>return</code> 键。这将触发一个接受<em>Tex / LaTex</em>源的输入字段。for example:<br>$$<br>V1×V2=xxxx表达式怎么写请自行搜索<br>$$<br>In the markdown source file，the math block is a *LaTeX</em> expression wrapped by a pair of ‘$$’ marks。</p>
+<p>You can find more details <a href="https://support.typora.io/Math/" target="_blank" rel="noopener">here</a>.</p>
+<h4 id="Table-插入表格"><a href="#Table-插入表格" class="headerlink" title="Table 插入表格"></a>Table 插入表格</h4><p>Input <code>| First Header  | Second Header |</code> and press the <code>return</code> key. This will create a table with two columns.</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>可以在表中包括内联Markdown，例如链接，粗体，斜体或删除线。</p>
+<p>最后，通过在标题行中包含冒号（ <code>：</code> ），可以将该列中的文本定义为左对齐，右对齐或居中对齐。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| Left-Aligned  | Center Aligned  | Right Aligned |</span><br><span class="line">| :------------ |:---------------:| -----:|</span><br><span class="line">| col 3 is      | some wordy text | $1600 |</span><br><span class="line">| col 2 is      | centered        |   $12 |</span><br><span class="line">| zebra stripes | are neat        |    $1 |</span><br></pre></td></tr></table></figure>
+
+<p>显示为</p>
+<table>
+<thead>
+<tr>
+<th align="left">Left-Aligned</th>
+<th align="center">Center Aligned</th>
+<th align="right">Right Aligned</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">col 3 is</td>
+<td align="center">some wordy text</td>
+<td align="right">$1600</td>
+</tr>
+<tr>
+<td align="left">col 2 is</td>
+<td align="center">centered</td>
+<td align="right">$12</td>
+</tr>
+<tr>
+<td align="left">zebra stripes</td>
+<td align="center">are neat</td>
+<td align="right">$1</td>
+</tr>
+</tbody></table>
+<p><em>(感觉直接用工具栏建立更便捷一点)</em></p>
+<h4 id="Footnotes-脚注"><a href="#Footnotes-脚注" class="headerlink" title="Footnotes 脚注"></a>Footnotes 脚注</h4><p>You can create footnotes like this <code>[^footnote]</code>[^footnote]</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="symbol">^footnote</span>]: <span class="link">Here is the *text* of the **footnote**</span></span><br></pre></td></tr></table></figure>
+
+<p>[^footnote]: Here is the <em>text</em> of the <strong>footnote</strong></p>
+<p>将鼠标悬停在“脚注”上标上可以查看脚注的内容。</p>
+<h4 id="Horizontal-Rules-分隔符"><a href="#Horizontal-Rules-分隔符" class="headerlink" title="Horizontal Rules 分隔符"></a>Horizontal Rules 分隔符</h4><p>Inputting <code>***</code> or <code>---</code> on a blank line and pressing <code>return</code> will draw a horizontal line.</p>
+<h4 id="YAML-Front-Matter-YAML首要事项"><a href="#YAML-Front-Matter-YAML首要事项" class="headerlink" title="YAML Front Matter YAML首要事项"></a>YAML Front Matter YAML首要事项</h4><p>Typora支持<a href="http://jekyllrb.com/docs/frontmatter/" target="_blank" rel="noopener">YAML Front Matter</a>。在<strong>文章顶部</strong>输入 <code>---</code> ，然后按 <code>Return</code> 以引入元数据块。或者从Typora的顶部菜单插入。 </p>
+<h4 id="Table-of-Contents（TOC）-目录"><a href="#Table-of-Contents（TOC）-目录" class="headerlink" title="Table of Contents（TOC） 目录"></a>Table of Contents（TOC） 目录</h4><p>输入 <code>[toc]</code> 并按 <code>return</code> 键。这将创建“目录”部分。 TOC会从文档中提取所有标题，并且当添加到文档中时，其内容会自动更新。</p>
+<h3 id="Span-Elements-跨度元素"><a href="#Span-Elements-跨度元素" class="headerlink" title="Span Elements 跨度元素"></a>Span Elements 跨度元素</h3><p>Span元素会在键入后立即解析并呈现。将光标移动到这些span元素的中间会将这些元素扩展为markdown源。</p>
+<p>以下是每个span元素的语法说明。</p>
+<h4 id="Links-插入链接"><a href="#Links-插入链接" class="headerlink" title="Links 插入链接"></a>Links 插入链接</h4><p>Markdown支持两种样式的链接：内联和引用。</p>
+<p>在两种样式中，链接文本均由[方括号]分隔。</p>
+<p>要创建<strong>内联链接</strong>，需要在链接文本的右方括号后立即使用一组常规括号。在括号内，将想要链接指向的URL以及链接的可选标题放在引号中。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is [<span class="string">an example</span>](<span class="link">http://example.com/ "Title"</span>) inline link.</span><br></pre></td></tr></table></figure>
+
+<p>This is <a href="http://example.com/" target="_blank" rel="noopener" title="Title">an example</a> inline link.</p>
+<p><em>（”Title”前面有一个空格）</em></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">This link</span>](<span class="link">http://example.net/</span>) has no title attribute.</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://example.net/" target="_blank" rel="noopener">This link</a> has no title attribute.</p>
+<h5 id="Internal-Links-内部链接"><a href="#Internal-Links-内部链接" class="headerlink" title="Internal Links 内部链接"></a>Internal Links 内部链接</h5><p><strong>可以将href设置为标题</strong>，这将创建一个书签，允许单击后跳至该部分。例如：</p>
+<p>Ctrl (or Command) + 单击<a href="#block-elements">This link</a> 将跳至标题 <code>Block Elements</code> 。</p>
+<p><u>要查看如何写，请移动光标或单击该链接并同时按<code>⌘</code>键以将元素扩展为markdown源。</u></p>
+<p>​      <em>↑ 最后一句没看懂，哪位大佬能为我解答</em></p>
+<h5 id="Reference-Links-参考样式链接"><a href="#Reference-Links-参考样式链接" class="headerlink" title="Reference Links 参考样式链接"></a>Reference Links 参考样式链接</h5><p>使用第二组方括号，在其中放置标签以标识链接：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">This is [<span class="string">an example</span>][<span class="symbol">id</span>] reference-style link.</span><br><span class="line"></span><br><span class="line">Then, anywhere in the document, you define your link label on a line by itself like this:</span><br><span class="line"></span><br><span class="line">[<span class="symbol">id</span>]: <span class="link">http://example.com/  "Optional Title Here"</span></span><br></pre></td></tr></table></figure>
+
+<p>This is <a href="http://example.com/" target="_blank" rel="noopener" title="Optional Title Here">an example</a> reference-style link.</p>
+<p>*”<a href="http://example.com&quot;和&quot;&quot;Optional" target="_blank" rel="noopener">http://example.com&quot;和&quot;&quot;Optional</a> Title Here””前均有一空格*</p>
+<p>隐式链接名称快捷方式可以省略链接的名称，在这种情况下，链接文本本身用作名称。只需使用一组空的方括号——例如，将单词“ Google”链接到google.com网站，可以简单地编写：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Google</span>][<span class="symbol"></span>]</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://googe.com/" target="_blank" rel="noopener">Google</a></p>
+<p>And then define the link:</p>
+<p> *”<a href="http://googe.com/" target="_blank" rel="noopener">http://googe.com/</a> “前有空格*</p>
+<h4 id="URLs-插入网址"><a href="#URLs-插入网址" class="headerlink" title="URLs 插入网址"></a>URLs 插入网址</h4><p>Typora允许将URL插入为链接，由 <code>&lt;</code> 单书名号 <code>&gt;</code> 包裹。</p>
+<p><code>&lt;i@typora.io&gt;</code> becomes <a href="mailto:&#105;&#64;&#x74;&#x79;&#x70;&#x6f;&#114;&#x61;&#46;&#x69;&#111;">&#105;&#64;&#x74;&#x79;&#x70;&#x6f;&#114;&#x61;&#46;&#x69;&#111;</a></p>
+<p>Typora还将自动链接标准URL。例如：<a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a></p>
+<h4 id="Images-引用图片"><a href="#Images-引用图片" class="headerlink" title="Images 引用图片"></a>Images 引用图片</h4><p>Images的语法和links相似，不过在链接前面需要加上 <code>!</code> 。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg</span>)</span><br><span class="line"></span><br><span class="line">![<span class="string">Alt text</span>](<span class="link">/path/to/img.jpg "Optional title"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可以通过拖放直接从文件夹或网页插入图像。单击图像修改markdown源代码。如果通过拖放添加的图像与当前正在编辑的文档位于同一目录或子目录中，则将使用相对路径。</p>
+<p>如果用markdown构建网站，则可以在YAML Front Matters中使用 <code>typora-root-url</code> 为本地计算机上的图像预览指定URL前缀。例如，在YAML Front Matters中输入 <code>typora-root-url:/User/Abner/Website/typora.io/</code> ，这样 <code>![alt](/blog/img/test.png)</code> 就会被视为Typora中的 <code>![alt](file:///User/Abner/Website/typora.io/blog/img/test.png)</code> 。</p>
+<p>You can find more details <a href="https://support.typora.io/Images/" target="_blank" rel="noopener">here</a>.</p>
+<p>Emphasis 斜体</p>
+<p>用一个 <code>*</code> 或 <code>_</code> 标注的文本相当于在HTML中被 <code>&lt;em&gt;</code> 标签定义，意为<em>斜体强调</em>。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*single asterisks*</span></span><br><span class="line"></span><br><span class="line"><span class="emphasis">_single underscores_</span></span><br></pre></td></tr></table></figure>
+
+<p><em>single asterisks</em></p>
+<p><em>single underscores</em></p>
+<p>GFM将忽略在代码和名称中常用的单词下划线：</p>
+<blockquote>
+<p>wow_great_stuff</p>
+<p>do_this_and_do_that_and_another_thing.</p>
+</blockquote>
+<p>要在原本会被当作重点标识作用的位置产生文字星号或下划线，可以反斜杠对其进行转义：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\<span class="emphasis">*this text is surrounded by literal asterisks\*</span></span><br></pre></td></tr></table></figure>
+
+<p><em>(在 <code>*</code> 前加反斜杠)</em></p>
+<p>显示为：</p>
+<p>*this text is surrounded by literal asterisks*</p>
+<p>Typora建议使用 <code>*</code> 。</p>
+<h4 id="Strong-加粗"><a href="#Strong-加粗" class="headerlink" title="Strong 加粗"></a>Strong 加粗</h4><p>两个 <code>*</code> 或者 <code>_</code> 起会在HTML中起到 <code>&lt;strong&gt;</code> 标签作用，意为<strong>重点加粗</strong>。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**double asterisks**</span></span><br><span class="line"></span><br><span class="line"><span class="strong">__double underscores__</span></span><br></pre></td></tr></table></figure>
+
+<p>显示为：</p>
+<p><strong>double asterisks</strong></p>
+<p><strong>double underscores</strong></p>
+<p>Typora建议使用 <code>**</code> 。</p>
+<h4 id="Code-行内代码"><a href="#Code-行内代码" class="headerlink" title="Code 行内代码"></a>Code 行内代码</h4><p>插入代码用(`)引起来。与预格式化的代码块不同，该符号用于指示正常段落中的代码。</p>
+<p>Use the <code>printf()</code> function.</p>
+<h4 id="Strikethrough-删除线"><a href="#Strikethrough-删除线" class="headerlink" title="Strikethrough 删除线"></a>Strikethrough 删除线</h4><p>在文本前后添加双波浪线 <code>~~</code> ，起到<del>删除线</del>效果。</p>
+<p><code>~~Mistaken text.~~</code> becomes <del>Mistaken text.</del></p>
+<h4 id="Underlines-下划线"><a href="#Underlines-下划线" class="headerlink" title="Underlines 下划线"></a>Underlines 下划线</h4><p>下划线由原始HTML提供支持。 <code>&lt;u&gt;</code> 文本 <code>&lt;/u&gt;</code> 。</p>
+<p><code>&lt;u&gt;Underline&lt;/u&gt;</code> becomes <u>Underline</u>.</p>
+<h4 id="Emoji-smile-emoji"><a href="#Emoji-smile-emoji" class="headerlink" title="Emoji :smile: emoji"></a>Emoji :smile: emoji</h4><p>可以通过按 <code>ESC</code> 键来触发表情符号的自动完成建议，或者在首选项面板上启用后自动触发它。另外，通过进入菜单栏（macOS）中的<code>Edit</code> -&gt; <code>Emoji &amp; Symbols</code> ，同样支持直接输入UTF-8表情符号字符。</p>
+<p> <code>:cry:</code>​ :cry:       ​<code>:smile:</code> :smile: </p>
+<p>想用更多的emoji代码可以去网络搜索。</p>
+<h4 id="Inline-Math-内联公式"><a href="#Inline-Math-内联公式" class="headerlink" title="Inline Math 内联公式"></a>Inline Math 内联公式</h4><p>要使用此功能，请首先在 <code>Preference</code>(首选项/偏好设置) 面板-&gt; <code>Markdown</code> 标签中启用它。<em>(重启后生效)</em></p>
+<p>使用 <code>$</code> 来括起 TeX 命令。例如： <code>$\lim_{x \to \infty} \exp(-x) = 0$</code> </p>
+<p>显示为：</p>
+<p>$\lim_{x \to \infty} \exp(-x) = 0$</p>
+<p>要触发在线数学的在线预览：输入“ $”，然后按 <code>ESC</code> 键，然后输入TeX命令。</p>
+<p>You can find more details <a href="https://support.typora.io/Math/" target="_blank" rel="noopener">here</a>.</p>
+<h4 id="Subscript-下标"><a href="#Subscript-下标" class="headerlink" title="Subscript 下标"></a>Subscript 下标</h4><p>要使用此功能，请首先在 <code>Preference</code>(首选项/偏好设置) 面板-&gt; <code>Markdown</code> 标签中启用它。<em>(重启后生效)</em></p>
+<p>使用 <code>~</code> 来括起下标内容。例如： <code>H~2~O</code>, <code>X~long\ text~</code> 。</p>
+<p>显示为：</p>
+<p>H<del>2</del>O   X<del>long\ text</del> </p>
+<h4 id="Superscript-上标"><a href="#Superscript-上标" class="headerlink" title="Superscript 上标"></a>Superscript 上标</h4><p>要使用此功能，请首先在 <code>Preference</code>(首选项/偏好设置) 面板-&gt; <code>Markdown</code> 标签中启用它。<em>(重启后生效)</em></p>
+<p>使用 <code>^</code> 括起上标内容。例如： <code>X^2^</code> 。</p>
+<p>显示为：</p>
+<p>x^2^</p>
+<h4 id="Highlight-高光"><a href="#Highlight-高光" class="headerlink" title="Highlight 高光"></a>Highlight 高光</h4><p>要使用此功能，请首先在 <code>Preference</code>(首选项/偏好设置) 面板-&gt; <code>Markdown</code> 标签中启用它。<em>(重启后生效)</em></p>
+<p>使用 <code>==</code> 括起高亮内容。例如：<code>==hightlight==</code></p>
+<p>显示为：</p>
+<p>==highlight==</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>可以使用HTML的语法来设置纯Markdown不支持的内容的样式。</p>
+<h4 id="Embed-Contents-嵌入内容"><a href="#Embed-Contents-嵌入内容" class="headerlink" title="Embed Contents 嵌入内容"></a>Embed Contents 嵌入内容</h4><p>一些网站提供的基于iframe的嵌入代码，可以在Typora中使用。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">height</span>=<span class="string">'265'</span> <span class="attr">scrolling</span>=<span class="string">'no'</span> <span class="attr">title</span>=<span class="string">'Fancy Animated SVG Menu'</span> <span class="attr">src</span>=<span class="string">'http://codepen.io/jeangontijo/embed/OxVywj/?height=265&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2'</span> <span class="attr">frameborder</span>=<span class="string">'no'</span> <span class="attr">allowtransparency</span>=<span class="string">'true'</span> <span class="attr">allowfullscreen</span>=<span class="string">'true'</span> <span class="attr">style</span>=<span class="string">'width: 100%;'</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>显示为：</p>
+<iframe height='265' scrolling='no' title='Fancy Animated SVG Menu' src='http://codepen.io/jeangontijo/embed/OxVywj/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'></iframe>
+
+
+
+<h4 id="Video-视频"><a href="#Video-视频" class="headerlink" title="Video 视频"></a>Video 视频</h4><p>使用HTML的 <code>&lt;video&gt;</code> 标签嵌入视频。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"xxx.mp4"</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Other-HTML-Supports-其他HTML支持"><a href="#Other-HTML-Supports-其他HTML支持" class="headerlink" title="Other  HTML Supports 其他HTML支持"></a>Other  HTML Supports 其他HTML支持</h4><p>You can find more details <a href="https://support.typora.io/HTML/" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="Supplement-补充"><a href="#Supplement-补充" class="headerlink" title="Supplement 补充"></a>Supplement 补充</h3><div class="note default">
+            <p>default 以下是通过阅读大佬们的使用指导所进行的补充：<br>转载自：<a href="https://sspai.com/post/54912" target="_blank" rel="noopener">liquid617</a></p>
+          </div>
+
+<h4 id="空格与换行"><a href="#空格与换行" class="headerlink" title="空格与换行"></a>空格与换行</h4><blockquote>
+<p>Typora 在空格与换行部分主要是使用 <a href="http://www.commonmark.cn/w/" target="_blank" rel="noopener">CommonMark</a> 作为标注规范。与前文提到的 GFM 一样，CommonMark 也是比较流行的 Markdown 语言规范（解析器）之一。</p>
+<ul>
+<li><strong>空格：</strong>在输入连续的空格后，Typora 会在编辑器视图里为你保留这些空格，但当你打印或导出时，这些空格会被省略成一个。<br>你可以在源代码模式下，为每个空格前加一个 <code>\</code> 转义符，或者直接使用 HTML 风格的 <code>&amp;nbps;</code> 来保持连续的空格。</li>
+<li><strong>软换行：</strong>需要说明的是，在 Markdown 语法中，换行（line break）与换段是不同的。且换行分为软换行和硬换行。在 Typora 中，你可以通过 <code>Shift + Enter</code> 完成一次软换行。软换行只在编辑界面可见，当文档被导出时换行会被省略。</li>
+<li><strong>硬换行：</strong>你可以通过 <code>空格 + 空格 + Shift + Enter</code> 完成一次硬换行，而这也是许多 Markdown 编辑器所原生支持的。硬换行在文档被导出时将被保留，且没有换段的段后距。</li>
+<li><strong>换段：</strong>你可以通过 <code>Enter</code> 完成一次换段。Typora 会自动帮你完成两次 <code>Shift + Enter</code> 的软换行，从而完成一次换段。这也意味着在 Markdown 语法下，换段是通过在段与段之间加入空行来实现的。</li>
+</ul>
+</blockquote>
+<h4 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h4><blockquote>
+<p>Typora 中代码的插入也可以分为行内和块间两种：</p>
+<ol>
+<li>行内代码：用 <code>...</code> 或 <code>...</code> 括起代码，代码会以主题中设置的样式出现在行内，但不会实现代码高亮。</li>
+<li>代码块：输入 ````` 后并输入语言名，换行，开始写代码，Typora 就会自动帮你实现代码高亮。Typora 原生支持许多编程语言代码块的语法高亮，基本日常常用的编程语言它都能很好地支持。<br> 除此以外，你也可以直接换行开始写，而后再选择语言。</li>
+</ol>
+</blockquote>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">yuneryeol</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/07/21/guide/">http://yoursite.com/2020/07/21/guide/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">Dell</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/typora/">typora</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/yuneryeol/cover/images/70977889.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/21/embellish/"><img class="prev-cover" data-src="https://cdn.jsdelivr.net/gh/yuneryeol/cover/images/56788008.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Next主题美化</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/21/setup/"><img class="next-cover" data-src="https://cdn.jsdelivr.net/gh/yuneryeol/cover/images/75242413.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">初识个人博客</div></div></a></div></nav><hr><div id="post-comment"><div class="comment-head"><div class="comment-headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div class="comments-items-1" data-name="Valine"><div class="vcomment" id="vcomment"></div><script>function loadvaline () {  
+  var requestSetting = function (from,set) {
+    var from = from
+    var setting = set.split(',').filter(function(item){
+    return from.indexOf(item) > -1
+    });
+    setting = setting.length == 0 ? from :setting;
+    return setting
+  }
+
+  var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+  var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+  function initValine () {
+    window.valine = new Valine({
+      el:'#vcomment',
+      appId: 'sIIJ3AAHT7j2vtSYvU51MRCe-gzGzoHsz',
+      appKey: 'vs4PpzG4O9dFNq4E8aB9uUuz',
+      placeholder: '快来留言吧~',
+      avatar: 'monsterid',
+      meta: guestInfo,
+      pageSize: '10',
+      lang: 'en',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '//i0.hdslb.com/bfs/emote/',
+      emojiMaps: {"2020":"dc709fac0d361370bcf0d36d32adb97df7c95824.png","tv_despise":"c1d59f439e379ee50eef488bcb5e5378e5044ea4.png","tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_grin":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_sad":"87f46748d3f142ebc6586ff58860d0e2fc8263ba.png","tv_angry":"26702dcafdab5e8225b43ffd23c94ac1ff932654.png","tv_aggrieved":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_makefunof":"911f987aa8bc1bee12d52aafe62bc41ef4474e6c.png","tv_blank":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_rage":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_frighten":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png","tv_vomit":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_think":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_smile":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_doubt":"0793d949b18d7be716078349c202c15ff166f314.png","tv_cryloudly":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_applaud":"1d21793f96ef4e6f48b23e53e3b9e42da833a0f6.png","tv_koubi":"c666f55e88d471e51bbd9fab9bb308110824a6eb.png","tv_kiss":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_naughty":"b9c41de8e82dd7a8515ae5e3cb63e898bf245186.png","tv_laughcry":"1abc628f6d4f4caf9d0e7800878f4697abbc8273.png","tv_halo":"5443c22b4d07fb1907ccc610c8e6db254f2461b7.png","tv_like":"f85c354995bd99e28fc76c869bfe42ba6438eff4.png","tv_shy":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_asleep":"8b196675b53af58264f383c50ad0945048290b33.png","tv_lechery":"61822c7e9aae5da76475e7892534545336b23a6f.png","tv_tuxue":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_already":"ea8ed89ee9878f2fece2dda0ea8a5dbfe21b5751.png","tv_byebye":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_sweating":"cead1c351ab8d79e9f369605beb90148db0fbed3.png","tv_titter":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_berserk":"fe31c08edad661d63762b04e17b8d5ae3c71a757.png","tv_confuse":"45821a01f51bc867da9edbaa2e070410819a95b2.png","tv_sleepy":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_regret":"56ab10b624063e966bfcb76ea5dc4794d87dfd47.png","tv_quite":"c9e990da7f6e93975e25fd8b70e2e290aa4086ef.png","tv_disdain":"6e72339f346a692a495b123174b49e4e8e781303.png","tv_bashful":"89712c0d4af73e67f89e35cbc518420380a7f6f4.png","tv_greedy":"fc7e829b845c43c623c8b490ee3602b7f0e76a31.png","tv_cute":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_rich":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_sick":"8b0ec90e6b86771092a498c54f09fc94621c1900.png","tv_onfire":"c32d39db2737f89b904ca32700d140a9241b0767.png","tv_embarrassed ":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_gangster":"093c1e2c490161aca397afc45573c877cdead616.png","tv_crying ":"7e71cde7858f0cd50d74b0264aa26db612a8a167.png","tv_coldly":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_frowning ":"72ccad6679fea0d14cce648b4d818e09b8ffea2d.png","tv_grimace":"0ffbbddf8a94d124ca2f54b360bbc04feb6bbfea.png","tv_ridicule":"4bc022533ef31544ca0d72c12c808cf4a1cce3e3.png","tv_stunned":"0b8cb81a68de5d5365212c99375e7ace3e7891b7.png","2233_laugh":"16b8794be990cefa6caeba4d901b934a227ee3b8.png","2233_doubt":"0b41f509351958dbb63d472fec0132d1bd03bd14.png","2233_surprised":"d1628c43d35b1530c0504a643ff80b6189fa0a43.png","2233_han":"247cd9df8cdf84b18368c21e3b2dd374e84c0927.png","2233_cry":"476a2a60f6e337b8c0697a592e0aa82781f6b33b.png","2233_confuse":"714eeb4eae0d0933b4ff08b7df788b1982f6b940.png","2233_yeah":"d7178e258a0efc969b65ccc2b1322fb235f5dff4.png","2233_angry":"f31953119c51b9748016440ac0b632f779929b37.png","2233_cute":"ea893aa25355de95ab4f03c2dad3f0c58d0c159e.png","2233_grievance":"d9d0bf9d358af8d5761093ec66d4e3f60d963a63.png","2233_depressed":"485203fe7100f2c8fc40b2800a18fe20b35f2f1a.png","2233_first":"3754ee6e5985bd0bd7dfb668981f2a8733398ebd.png","2233_drink":"695bf5429472049b52c1e0de586f8a2511195a23.png","2233_tuhun":"e999af499edf38a91ca68b1a9d2f97042c1d6734.png","2233_wordless":"fdb5870f32cfaf7949e0f88a13f6feba4a48b719.png","tv_1":"f80d384875183dfe2e24be13011c595c0210d273.png","tv_2":"05e279abbf3f72d5cc45548504a4220c5514b8b9.png","tv_3":"86ccf6d0b5480169bf80f3582fae09d7ed455c06.png","tv_4":"38456e3bde2839b00b536a8be13934fa57c8e298.png","tv_5":"6fd437f547ef1e4f231ff475d02f58bb94cef5a5.png","tv_6":"5c150cec77eae1b05d5ca46526450ff3beeb44d2.png","tv_7":"de3aee88f7b6cc20ba9480c96c02f83a844381a9.png","tv_8":"05188008ea84c70d94e0076e28de15bf56f4c441.png","tv_9":"938bdf98df945576ae88e2a22931db07ded9e663.png","tv_10":"eb41a8c04840e4f77e76a4bff7a29ac89c432f4e.png","tv_11":"68d524b7e515396b6563d320fb710c64abfb1063.png","tv_12":"6853161f0eab3332b874ab7c6c0311035b7538f3.png","tv_13":"a695fe1301aab2675ab6f6e34757c25a863a8617.png","tv_14":"f8219e484d5a55787c3f1722dc3112d0eba03a69.png","tv_15":"fbd12affebfdaadd3d721bffdb685a6b1ee71219.png","xsk_InternetUser":"5d0d6cc54b508d30b4f50b6b5f7b7e1e259d84ea.png","xsk_shock":"7a4cb0b644214d476ce198ddf6a7a0aa31311199.png","xsk_heng":"8854f1b8a82126e3b87f3a1563da5feb55b23e71.png","xsk_sleep":"40ef7e6d931acb37e5514b70d13663e86dc3698b.png","xsk_wrysmile":"b7278f750c6f2235f41f37056d727f25d3bf781f.png","xsk_die":"52543025a070fde5c01a10320c9636ec3173ac99.png","xsk_ok":"52a0dcee66c91bf123bf53bd48a269b1317d17f9.png","xsk_laugh":"1d3355fb89c24ab3c50e5c152d8b990a290dc63e.png","xsk_cute":"4cd1024d0c2ecee93224477946656d32c1705ccf.png","xsk_scared":"7407634bf67bfe9d7806f15d57608a1b18c2b4c2.png","xsk_ee":"a4d8f95baaa24821fd591a7dbeee1b869e760f59.png","xsk_funny":"d3717f10ffe9787336bc39a09214270988521a67.png","xsk_witty":"e543c0a823ca915df9362283f4ae950e9e9cc2e9.png","xsk_cry":"a23055546c19eba663b16370b8e072394d87ff53.png","xsk_angry":"bf398cbbcfaae107d1b59aaf03895f38422e3d87.png","xsk_peep":"52463ded4f23649db10ba3ced662ed946c5edf0b.png","xsk_tuxue":"5772d22015e5b2b40a9fe302b5967ec7282ac848.png","xsk_wordless":"b6c763c6484ce2e48299ceb21861e46318868871.png","xsk_doubt":"7750b698d15a1b8e83c0f59106e8e9cd5cb57897.png","xsk_soap":"7f1a857e9430dcf3050ce0ef5fa19aefebea6dc4.png","A&B_tea":"d2acc1227312dd64284d809ab66d3c7f7d8ec020.png","A&B_110":"7f482b82a3de44ae14537cbafcbc40cf65f7113e.png","A&B_cry":"77545a5e420e2c43e0e4a7996a71769638ae3f90.png","A&B_headdown":"0d23b726b084280f941f14919ce63c43f8bc724c.png","A&B_haha":"6f5210b7d0a6b14f586df1f91f5c3a46c1296b43.png","A&B_commander":"a594a91717e28bdcab82821086a41160a1345c45.png","A&B_flowers":"874d2c39a0ca891abce5e65fafc287e0c2d3bbea.png","A&B_hands":"6f058f78bce5d1c9b370c3807c891e685bb68a17.png","A&B_doubt":"f077d5ecf0e86f24991a104f995b3a652091d529.png","A&B_liedown":"9038d450dbadaf132847d67cb26931aa5bf76d4c.png","A&B_wordless":"1a805b885a1691e9bf4425164a9400e2457f4d1b.png","A&B_call":"af8f017e383a1999e26a7f91c3ec3c83fbb7ba77.png","A&B_NO":"ee0de8296b20d295b79ea9b70ca4f126eb4aff1d.png","A&B_OK":"5ae25cc388c59192133f08345e461098fad4e63b.png","A&B_eatmelon":"70776b579d2952580249ac6a52e724850d037591.png","A&B_catch":"8bf33ff2f9699286102fb1a256a2523695c17d35.png","hotword_1":"142409b595982b8210b2958f3d340f3b47942645.png","hotword_2":"bba3703ab90b7d16fe9dbcb85ed949db687f8331.png","hotword_3":"55f8f6445ca7c3170cdfc5b16036abf639ce9b57.png","hotword_4":"d77e2de26da143249f0c0ad7a608c27152c985bf.png","hotword_5":"2a165b555ba20391316366c664ed7891883dc5aa.png","hotword_6":"c1d1e76c12180adc8558f47006fe0e7ded4154bb.png","hotword_7":"b528220f9c37256ed6a37f05bf118e44b08b81e5.png","hotword_8":"21f15fe11b7a84d2f2121c16dec50a4e4556f865.png","hotword_9":"e08543c71202b36c590094417fcfbb80c3506cd8.png","hotword_10":"a9cf77c78e1b9b40aa3ed4862402fba008ee2f51.png","hotword_11":"0e98299d7decf5eaffad854977946075c3e91cb8.png","hotword_12":"a01ca28923daa7cc896c42f27deb4914e20dd572.png","hotword_13":"c37f88cf799f9badf9d84b7671dc3dd98c0fc0c2.png","hotword_14":"98e6950e39fbb4dd1c576042063ca632074070ba.png","hotword_15":"535e00658e7e47966f154d3a167fa2365ebc4321.png","hotword_16":"d8065c2e7ce48c929317a94553499a46fecc262a.png","hotword_17":"3de98174b510cf7dc5fd1bd08c5d881065e79137.png","hotword_18":"5cc6c3357c4df544dd8de9d5c5c0cec97c7c9a56.png","hotword_19":"255a938f39cea625032b6650036b31aa26c50a3c.png","hotword_20":"cbe798a194612958537c5282fcca7c3bcd2aa15c.png","hotword_21":"29bd57ec4e8952880fea6c9e47aee924e91f10c4.png","hotword_22":"7ca61680a905b5b6e2e335c630e725b648b03b4d.png","hotword_23":"c97064450528a0e45c7e7c365a15fbb13fd61d8c.png","hotword_24":"c9b8683827ec6c00fea5327c9bec14f581cef2aa.png","hotword_25":"9e0b3877d649aaf6538fbdd3f937e240a9d808e4.png","hotword_26":"9db817cba4a7f4a42398f3b2ec7c0a8e0c247c42.png","hotword_27":"a8cbf3f6b8cd9377eeb15b9172f3cd683b2e4650.png","hotword_28":"e68497c775feaac1c3b1a6cd63a50cfb11b767c4.png","hotword_29":"d424d1ad8d14c1c9b8367842bc68c658b9229bc1.png","hotword_30":"a49e0d0db1e7d35a0f7411be13208951ab448f03.png","hotword_31":"84820c2b147a8ca02f3c4006b63f76c6313cbfa0.png","hotword_32":"9ff2e356797c57ee3b1675ade0883d2d2247be9b.png","hotword_33":"35668cc12ae25b9545420e4a85bf21a0bfc03e5d.png","hotword_34":"50782fbf5d9b7f48f9467b5c53932981e321eedc.png","hotword_35":"faad40c56447f1f8abcb4045c17ce159d113d1fd.png","hotword_36":"f41fdafe2d0fbb8e8bc1598d2cf37e355560103a.png","hotword_37":"24e7a6a6e6383c987215fb905e3ee070aca259b5.png","hotword_38":"a523f3e4c63e4db1232365765d0ec452f83be97e.png","hotword_39":"ea9db62ff5bca8e069cd70c4233353a802835422.png","hotword_40":"f30089248dd137c568edabcb07cf67e0f6e98cf3.png","hotword_41":"ccc94600b321a28116081e49ecedaa4ee8728312.png","hotword_42":"33ccd3617bfa89e9d1498b13b7542b63f163e5de.png","mask":"3ad2f66b151496d2a5fb0a8ea75f32265d778dd3.png","chickenlegs":"c7860392815d345fa69c4f00ef18d67dccfbd574.png","smile":"685612eadc33f6bc233776c6241813385844f182.png","laugh":"81edf17314cea3b48674312b4364df44d5c01f17.png","ciya":"b5a5898491944a4268360f2e7a84623149672eb6.png","OK":"4683fd9ffc925fa6423110979d7dcac5eda297f4.png","stareyes":"63c9d1a31c0da745b61cdb35e0ecb28635675db2.png","ohho":"362bded07ea5434886271d23fa25f5d85d8af06c.png","dislike":"de4c0783aaa60ec03de0a2b90858927bfad7154b.png","like":"8a10a4d73a89f665feff3d46ca56e83dc68f9eb8.png","lemon":"92b1c8cbceea3ae0e8e32253ea414783e8ba7806.png","cry":"2caafee2e5db4db72104650d87810cc2c123fc86.png","shy":"9d2ec4e1fbd6cb1b4d12d2bbbdd124ccb83ddfda.png","wordless":"44667b7d9349957e903b1b62cb91fb9b13720f04.png","doubt":"b7840db4b1f9f4726b7cb23c0972720c1698d661.png","naughty":"8290b7308325e3179d2154327c85640af1528617.png","weeping":"485a7e0c01c2d70707daae53bee4a9e2e31ef1ed.png","sinistersmile":"bb84906573472f0a84cebad1e9000eb6164a6f5a.png","snickering":"6c49d226e76c42cd8002abc47b3112bc5a92f66a.png","laughing":"ca94ad1c7e6dac895eb5b33b7836b634c614d1c0.png","insidious":"ba8d5f8e7d136d59aab52c40fd3b8a43419eb03c.png","coverface":"6921bb43f0c634870b92f4a8ad41dada94a5296d.png","jiong":"12e41d357a9807cc80ef1e1ed258127fcc791424.png","dumb":"33ad6000d9f9f168a0976bc60937786f239e5d8c.png","picknose":"cb89184c97e3f6d50acfd7961c313ce50360d70f.png","surprise":"0afecaf3a3499479af946f29749e1a6c285b6f65.png","confound":"f8e9a59cad52ae1a19622805696a35f0a0d853f3.png","laughandcry":"c3043ba94babf824dea03ce500d0e73763bf4f40.png","miaoa":"b4cb77159d58614a9b787b91b1cd22a81f383535.png","doge":"bba7c12aa51fed0199c241465560dfc2714c593e.png","funny":"d15121545a99ac46774f1f4465b895fe2d1411c3.png","eatmelon":"4191ce3c44c2b3df8fd97c33f85d3ab15f4f3c84.png","call":"431432c43da3ee5aab5b0e4f8931953e649e9975.png","likes":"1a67265993913f4c35d15a6028a30724e83e7d35.png","applaud":"895d1fc616b4b6c830cf96012880818c0e1de00d.png","awkward":"cb321684ed5ce6eacdc2699092ab8fe7679e4fda.png","cold":"cb0ebbd0668640f07ebfc0e03f7a18a8cd00b4ed.png","soulout":"43d3db7d97343c01b47e22cfabeca84b4251f35a.png","grievance":"d2f26cbdd6c96960320af03f5514c5b524990840.png","arrogance":"010540d0f61220a0db4922e4a679a1d8eca94f4e.png","pain":"905fd9a99ec316e353b9bd4ecd49a5f0a301eabf.png","scare":"9c10c5ebc7bef27ec641b8a1877674e0c65fea5d.png","sickness":"0f25ce04ae1d7baf98650986454c634f6612cb76.png","vomiting":"06946bfe71ac48a6078a0b662181bb5cad09decc.png","xuu":"e64af664d20716e090f10411496998095f62f844.png","covereyes":"c5c6d6982e1e53e478daae554b239f2b227b172b.png","think":"cfa9b7e89e4bfe04bbcd34ccb1b0df37f4fa905c.png","goodbye":"fc510306bae26c9aec7e287cdf201ded27b065b9.png","rolleyes":"eba54707c7168925b18f6f8b1f48d532fe08c2b1.png","yawn":"888d877729cbec444ddbd1cf4c9af155a7a06086.png","struggle":"bb2060c15dba7d3fd731c35079d1617f1afe3376.png","sunglasses":"3a03aebfc06339d86a68c2d893303b46f4b85771.png","puting":"531863568e5668c5ac181d395508a0eeb1f0cda4.png","sad":"a651db36701610aa70a781fa98c07c9789b11543.png","crazy":"4c87afff88c22439c45b79e9d2035d21d5622eba.png","angry":"3195714219c4b582a4fb02033dd1519913d0246d.png","cheers":"8da12d5f55a2c7e9778dcc05b40571979fe208e6.png","love":"ed04066ea7124106d17ffcaf75600700e5442f5c.png","lucky":"643d6c19c8164ffd89e3e9cdf093cf5d773d979c.png","victory":"b49fa9f4b1e7c3477918153b82c60b114d87347c.png","comeon":"c7aaeacb21e107292d3bb053e5abde4a4459ed30.png","bless":"fafe8d3de0dc139ebe995491d2dac458a865fb30.png","clenches":"89516218158dbea18ab78e8873060bf95d33bbbe.png","snapfigers":"1b5c53cf14336903e1d2ae3527ca380a1256a077.png","support":"3c210366a5585706c09d4c686a9d942b39feeb50.png","hug":"41780a4254750cdaaccb20735730a36044e98ef3.png","blameme":"07cc6077f7f7d75b8d2c722dd9d9828a9fb9e46d.png","kneel":"f2b3aee7e521de7799d4e3aa379b01be032698ac.png","blackhole":"e90ec4c799010f25391179118ccd9f66b3b279ba.png","mouse":"8e6fb491eb1bb0d5862e7ec8ccf9a3da12b6c155.png","blessing":"5de5373d354c373cf1617b6b836f3a8d53c5a655.png","custom_25":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/24.webp","custom_23":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/22.webp","custom_12":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/11.webp","custom_11":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/10.webp","custom_10":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/9.webp","custom_9":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/8.webp","custom_5":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/4.jpg","custom_4":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/3.jpg","custom_3":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/2.webp","custom_2":"https://cdn.jsdelivr.net/gh/blogimg/emotion/custom/1.webp"},
+      enableQQ: false,
+      requiredFields: requiredFields
+    });
+  }
+  loadScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || false) {
+  window.addEventListener('load', loadvaline)
+}
+else {
+  function loadOtherComment () {
+    loadvaline()
+  }
+}</script></div></div></div></article></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/yuneryeol/cover/images/67560672.png)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By yuneryeol</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/third-party/click_heart.js"></script><script>if (document.getElementsByClassName('mermaid').length) {
+  loadScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js',function () {
+    mermaid.initialize({
+      theme: 'default',
+  })
+})
+}</script></body></html>
